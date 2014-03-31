@@ -20,7 +20,7 @@ nav {
 	min-width: @nav-width;
 	top: @header-height;
 	border-right: 1px solid #ccc;
-	bottom:0;
+	height: 100%;
 	background-color: #efefef;
 	.header {
 		font-size: 1.2em;
@@ -41,24 +41,4 @@ nav {
 	position: absolute;
 	left:@nav-width;
 	top:@header-height;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	right:0;
-	bottom:0;
-	width:auto;
-	table {
-		td {
-			max-width: 300px;
-		}
-		th {
-			font-weight: bold;
-		}
-		.glyphicon {
-			cursor: pointer;
-			color: #ccc;
-		}
-		.favorite {
-			color:red;
-		}
-	}
 }

@@ -1,0 +1,24 @@
+<div>
+	
+	<h1>{{name}}</h1>
+	<div ng-hide='loaded'>Loading</div>
+	<div ng-show='loaded'>
+		<span ng-show="albums.length == 0">The look up returned no results</span>
+		<table ng-show="albums.length > 0" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Favorite?</th>
+					<th>Name</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat='album in albums'>
+					<td><span class="glyphicon glyphicon-heart"></span></td>
+					<td><a href="/#/album/{{album.album.name}}/{{album.album.href}}/">{{album.album.name}}</a></td>
+					<td>{{album.album.released}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

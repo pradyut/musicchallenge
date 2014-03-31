@@ -1,0 +1,27 @@
+<div>
+	
+	<h1>{{term}}</h1>
+	<div ng-hide='loaded'>Loading</div>
+	<div ng-show='loaded'>
+		There were {{total}} results
+		<div class='page-controls-div'>
+			<!-- <span>Page {{current}} of {{total/100)| number:0}}</span><span><a href={{getNext()}}>Next</a></span> -->
+		</div>
+		<table ng-show="artists.length > 0" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Favorite?</th>
+					<th>Name</th>
+					<th>Popularity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat='artist in artists'>
+					<td><span class="glyphicon glyphicon-heart"></span></td>
+					<td><a href="/#/artist/{{artist.name}}/{{artist.href}}/">{{artist.name}}</a></td>
+					<td>{{artist.popularity}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
