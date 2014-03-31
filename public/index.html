@@ -37,6 +37,7 @@
 			<ul>
 				<li ng-repeat='artist in favoriteArtistsArr'>
 					<a href="/#/artist/{{artist.name}}/{{artist.href}}/">{{artist.name}}</a>
+					<a ng-click='toggleFavoriteArtist(artist)' class='remove'>X</a>
 				</li>
 			</ul>
 			<h4>Albums</h4>
@@ -44,12 +45,17 @@
 			<ul>
 				<li ng-repeat='album in favoriteAlbumsArr'>
 					<a href="/#/album/{{album.album.name}}/{{album.album.href}}/">{{album.album.name}}</a>
+					<a ng-click='toggleFavoriteAlbum(album)' class='remove'>X</a>
 				</li>
 			</ul>
 			<h4>Tracks</h4>
 			<span ng-show='favoriteTracksArr.length==0'>None Selected</span>
 			<ul>
-				<li ng-repeat='track in favoriteTracksArr'>{{track.name}}</li>
+				<li ng-repeat='track in favoriteTracksArr'>
+					{{track.name}}
+					<a ng-click='toggleFavoriteTrack(track)' class='remove'>X</a>
+				</li>
+
 			</ul>
 		</div>
 	</nav>

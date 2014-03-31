@@ -14,7 +14,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat='album in albums | unique:"album.name"'>
-					<td><span ng-class='{"favorite" : favoriteAlbums[album.album.href] }' ng-click='toggleFavorites(album)'class="glyphicon glyphicon-heart"></span></td>
+					<td><span ng-class='{"favorite" : favoriteAlbums[album.album.href] }' ng-click='toggleFavoriteAlbum(album)'class="glyphicon glyphicon-heart"></span></td>
 					<td><a href="/#/album/{{album.album.name}}/{{album.album.href}}/">{{album.album.name}}</a></td>
 					<td>{{album.album.released}}</td>
 				</tr>

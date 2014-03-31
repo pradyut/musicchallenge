@@ -35,6 +35,15 @@ nav {
 		border-top: 1px solid #BBB;
 		color: #666;
 		line-height: 1.6;
+		.remove {
+			display: none;
+			cursor: pointer;
+		}
+		li {
+			&:hover .remove {
+				display: inline;
+			}
+		}
 	}
 }
 #wrapper {
