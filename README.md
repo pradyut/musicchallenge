@@ -23,3 +23,4 @@ TODO:
 2. More comments
 3. Minification
 4. Reusable logic
+5. Persist favorites
