@@ -16,3 +16,10 @@ npm install
 
 Run server with:
 node server.js
+
+TODO:
+
+1. Unit tests
+2. More comments
+3. Minification
+4. Reusable logic
