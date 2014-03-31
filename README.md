@@ -2,7 +2,10 @@ musicchallenge
 ==============
 
 Music Programming Challenge
+by Pradyut Pokuri
 
+View here:
+http://music.plugmeup.com/
 
 Requirements:
 NodeJS
