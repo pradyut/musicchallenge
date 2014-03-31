@@ -49,7 +49,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 app.controller("MainController", function($scope, $state){
   $scope.search = function() {
-    $state.go('search.details',{'term': $scope.term });
+    $state.go('search.details',{'term': $scope.term , 'page': 1});
   };
   $scope.Math = window.Math;
   $scope.favoriteArtists = {};
@@ -119,10 +119,10 @@ app.controller("SearchController", function($scope, $http, $stateParams){
   $scope.page = $stateParams.page;
   
   $scope.getPrev = function() {
-    return location.hash.slice(0,-1)+(parseInt($scope.current)-1);
+    return location.origin+"/#/search/"+$scope.term+"/"+(parseInt($scope.current)-1);
   };
   $scope.getNext = function() {
-    return location.hash.slice(0,-1)+(parseInt($scope.current)+1);
+    return location.origin+"/#/search/"+$scope.term+"/"+(parseInt($scope.current)+1);
   };
 
   url = 'http://ws.spotify.com/search/1/artist.json?q='+$scope.term;
