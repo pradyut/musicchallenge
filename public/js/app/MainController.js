@@ -1,4 +1,4 @@
-var app = angular.module('MusicChallenge', ["ui.bootstrap", "ui.router"]);
+var app = angular.module('MusicChallenge', ["ui.bootstrap", "ui.router", "ui.unique"  ]);
 app.config(function($stateProvider, $urlRouterProvider){
       
   // For any unmatched url, send to /index
@@ -51,6 +51,13 @@ app.controller("MainController", function($scope, $state){
   $scope.search = function() {
     $state.go('search.details',{'term': $scope.term });
   };
+  $scope.favoriteArtists = {};
+  $scope.favoriteAlbums = {};
+  $scope.favoriteTracks = {};
+
+  $scope.favoriteArtistsArr = [];
+  $scope.favoriteAlbumsArr = [];
+  $scope.favoriteTracksArr = [];
 });
 
 app.controller("SearchController", function($scope, $http, $stateParams){
@@ -98,15 +105,30 @@ app.controller("AlbumController", function($scope, $http, $stateParams){
   $scope.id = $stateParams.id;
   $scope.name = $stateParams.name;
   
-  
+  console.log($scope.favoriteTracksArr);
   url = 'http://ws.spotify.com/lookup/1/.json?uri='+$scope.id+'&extras=trackdetail';
   
   $http({method: 'GET', url: url}).
     success(function(data, status, headers, config) {
       $scope.loaded = true;
       $scope.tracks = data.album.tracks;
+      console.log(data.album.tracks);
     }).
     error(function(data, status, headers, config) {
       
     });
+  $scope.toggleFavorites = function(track) {
+    if(track.href in $scope.favoriteTracks) {
+      console.log('del fav')
+      $scope.favoriteTracksArr.splice($scope.favoriteTracks[track.href], 1);
+      delete $scope.favoriteTracks[track.href];
+    }
+    else{
+      console.log('add fav')
+      $scope.favoriteTracksArr.push(track);
+      $scope.favoriteTracks[track.href] = $scope.favoriteTracksArr[$scope.favoriteTracksArr.length - 1];
+    }
+    console.log($scope.favoriteTracks);
+    console.log($scope.favoriteTracksArr);
+  };
 });

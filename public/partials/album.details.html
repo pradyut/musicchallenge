@@ -15,8 +15,8 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat='track in tracks'>
-					<td><span class="glyphicon glyphicon-heart"></span></td>
-					<td><a href="/#/album/{{album.album.href}}">{{track.name}}</a></td>
+					<td><span ng-class='{"favorite" : favoriteTracks[track.href] }' ng-click='toggleFavorites(track)' class="glyphicon glyphicon-heart"></span></td>
+					<td>{{track.name}}</td>
 					<td>{{track.length}}</td>
 					<td>{{track.popularity}}</td>
 				</tr>
