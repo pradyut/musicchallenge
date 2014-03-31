@@ -32,11 +32,22 @@
 	<nav>
 		<h2 class='header'>Your Favorites</h2>
 		<div class='list'>
-			<h4>Albums</h4>
+			<h4>Artists</h4>
+			<span ng-show='favoriteArtistsArr.length==0'>None Selected</span>
 			<ul>
-				<li ng-repeat='album in favoriteAlbumsArr'>{{album.album.name}}</li>
+				<li ng-repeat='artist in favoriteArtistsArr'>
+					<a href="/#/artist/{{artist.name}}/{{artist.href}}/">{{artist.name}}</a>
+				</li>
+			</ul>
+			<h4>Albums</h4>
+			<span ng-show='favoriteAlbumsArr.length==0'>None Selected</span>
+			<ul>
+				<li ng-repeat='album in favoriteAlbumsArr'>
+					<a href="/#/album/{{album.album.name}}/{{album.album.href}}/">{{album.album.name}}</a>
+				</li>
 			</ul>
 			<h4>Tracks</h4>
+			<span ng-show='favoriteTracksArr.length==0'>None Selected</span>
 			<ul>
 				<li ng-repeat='track in favoriteTracksArr'>{{track.name}}</li>
 			</ul>

@@ -80,6 +80,19 @@ app.controller("SearchController", function($scope, $http, $stateParams){
     error(function(data, status, headers, config) {
       
     });
+  $scope.toggleFavorites = function(artist) {
+    if(artist.href in $scope.favoriteArtists) {
+
+      $scope.favoriteArtistsArr.splice($scope.favoriteArtists[artist.href], 1);
+      delete $scope.favoriteArtists[artist.href];
+    }
+    else{
+      
+      $scope.favoriteArtistsArr.push(artist);
+      $scope.favoriteArtists[artist.href] = $scope.favoriteArtistsArr[$scope.favoriteArtistsArr.length - 1];
+    }
+    
+  };
 });
 
 
@@ -109,7 +122,7 @@ app.controller("ArtistController", function($scope, $http, $stateParams){
       $scope.favoriteAlbumsArr.push(album);
       $scope.favoriteAlbums[album.album.href] = $scope.favoriteAlbumsArr[$scope.favoriteAlbumsArr.length - 1];
     }
-    console.log($scope.favoriteAlbumsArr)
+
   };
 });
 
