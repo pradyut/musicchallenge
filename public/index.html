@@ -30,12 +30,16 @@
 		</form>
 	</header>
 	<nav>
-		<h2 class='header'>Favorites</h2>
+		<h2 class='header'>Your Favorites</h2>
 		<div class='list'>
-		<ul>
-			<li ng-repeat='track in favoriteTracksArr'>{{track.name}}</li>
-			<li>bladsf</li>
-		</ul>
+			<h4>Albums</h4>
+			<ul>
+				<li ng-repeat='album in favoriteAlbumsArr'>{{album.album.name}}</li>
+			</ul>
+			<h4>Tracks</h4>
+			<ul>
+				<li ng-repeat='track in favoriteTracksArr'>{{track.name}}</li>
+			</ul>
 		</div>
 	</nav>
 	<div class="container" id = "wrapper">

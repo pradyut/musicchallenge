@@ -98,6 +98,19 @@ app.controller("ArtistController", function($scope, $http, $stateParams){
     error(function(data, status, headers, config) {
       
     });
+  $scope.toggleFavorites = function(album) {
+    if(album.album.href in $scope.favoriteAlbums) {
+
+      $scope.favoriteAlbumsArr.splice($scope.favoriteAlbums[album.album.href], 1);
+      delete $scope.favoriteAlbums[album.album.href];
+    }
+    else{
+      
+      $scope.favoriteAlbumsArr.push(album);
+      $scope.favoriteAlbums[album.album.href] = $scope.favoriteAlbumsArr[$scope.favoriteAlbumsArr.length - 1];
+    }
+    console.log($scope.favoriteAlbumsArr)
+  };
 });
 
 
@@ -112,23 +125,20 @@ app.controller("AlbumController", function($scope, $http, $stateParams){
     success(function(data, status, headers, config) {
       $scope.loaded = true;
       $scope.tracks = data.album.tracks;
-      console.log(data.album.tracks);
     }).
     error(function(data, status, headers, config) {
       
     });
   $scope.toggleFavorites = function(track) {
     if(track.href in $scope.favoriteTracks) {
-      console.log('del fav')
+
       $scope.favoriteTracksArr.splice($scope.favoriteTracks[track.href], 1);
       delete $scope.favoriteTracks[track.href];
     }
     else{
-      console.log('add fav')
+      
       $scope.favoriteTracksArr.push(track);
       $scope.favoriteTracks[track.href] = $scope.favoriteTracksArr[$scope.favoriteTracksArr.length - 1];
     }
-    console.log($scope.favoriteTracks);
-    console.log($scope.favoriteTracksArr);
   };
 });
